@@ -31,5 +31,5 @@ func ConnectDatabase() {
 	} else {
 		fmt.Println("Connected to the database :", dbname)
 	}
-	DB.AutoMigrate(&Book{})
+	DB.AutoMigrate(&User{})
 }
