@@ -12,7 +12,10 @@ import (
 func FindBooks(c *gin.Context) {
 	var books []models.Book
 	models.DB.Find(&books)
-	c.JSON(http.StatusOK, gin.H{"data": books})
+	// c.JSON(http.StatusOK, gin.H{"data": books})
+	c.HTML(http.StatusOK, "views/index.html", gin.H{
+		"data": books,
+	})
 }
 
 // Get /books/{id}
