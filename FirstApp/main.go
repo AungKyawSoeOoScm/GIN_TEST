@@ -13,7 +13,7 @@ func main() {
 	r.LoadHTMLGlob("templates/**/**")
 	r.GET("/", func(ctx *gin.Context) {
 		ctx.HTML(http.StatusOK, "views/index.html", gin.H{
-			"title": "Hello Gin",
+			"title": "Hello Gimn",
 		})
 	})
 	log.Println("Server Started!")
