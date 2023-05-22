@@ -1,2 +1,0 @@
-go get -u github.com/rs/zerolog/log
-go get github.com/go-playground/validator/v10

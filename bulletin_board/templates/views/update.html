@@ -1,0 +1,23 @@
+{{define "update.html"}}
+<html>
+    {{ template "header.html" }}
+    <body>
+        {{template "common_header.html"}}
+        <h2>Update</h2>
+        <form action="/tags/{{.Tag.Id}}" method="post" class="createForm">
+            <input type="hidden" name="_method" value="PUT">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" value="{{.Tag.Title}}"
+                required>
+            <textarea name="description" id="description" cols="30" rows="10">
+                {{.Tag.Description}}
+            </textarea>
+            <br>
+            {{ with .Errors.Name }}
+            <p class="error">{{ . }}</p>
+            {{ end }}
+            <button type="submit">Update</button>
+            {{ template "footer.html" }}
+        </body>
+    </html>
+    {{end}}
