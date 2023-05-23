@@ -58,19 +58,19 @@ func UsersRouter(router *gin.RouterGroup, usersInterface interfaces.UsersInterfa
 	}
 }
 
-// TagRouter
+// PostRouter
 func TagsRouter(router *gin.RouterGroup, PostsController *controller.PostController, userInterface interfaces.UsersInterface) {
 	tagRouter := router.Group("/tags")
 	{
 		tagRouter.GET("/create", PostsController.CreateForm)
-		tagRouter.GET("/update/:tagId", PostsController.UpdateForm)
+		// tagRouter.GET("/update/:tagId", PostsController.UpdateForm)
 		tagRouter.GET("", middlewares.IsAuth(userInterface), PostsController.FindAll)
-		tagRouter.GET("/:tagId", middlewares.IsAuth(userInterface), PostsController.FindById)
-		tagRouter.POST("", middlewares.IsAuth(userInterface), func(ctx *gin.Context) {
-			userId := ctx.GetInt("Id")
-			PostsController.Create(ctx, userId)
-		})
-		tagRouter.POST("/:tagId", middlewares.IsAuth(userInterface), PostsController.Update)
+		// tagRouter.GET("/:tagId", middlewares.IsAuth(userInterface), PostsController.FindById)
+		// tagRouter.POST("", middlewares.IsAuth(userInterface), func(ctx *gin.Context) {
+		// 	userId := ctx.GetInt("Id")
+		// 	PostsController.Create(ctx, userId)
+		// })
+		// tagRouter.POST("/:tagId", middlewares.IsAuth(userInterface), PostsController.Update)
 		tagRouter.DELETE("/:tagId", middlewares.IsAuth(userInterface), PostsController.Delete)
 	}
 }

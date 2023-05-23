@@ -3,7 +3,8 @@ package controller
 import (
 	"gin_test/bulletin_board/data/request"
 	"gin_test/bulletin_board/helper"
-	"gin_test/bulletin_board/service"
+	service "gin_test/bulletin_board/service/auth"
+
 	"net/http"
 	"time"
 

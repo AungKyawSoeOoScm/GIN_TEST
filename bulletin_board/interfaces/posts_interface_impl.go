@@ -59,8 +59,9 @@ func (t *PostsRepositoryImpl) Update(posts model.Posts) {
 		Id:          posts.Id,
 		Title:       posts.Title,
 		Description: posts.Description,
+		Status:      posts.Status,
 	}
-	fmt.Println("dkjakkk")
+	fmt.Println(updateTag, "erioejrdjfoiaj")
 	result := t.Db.Model(&posts).Updates(updateTag)
 	helper.ErrorPanic(result.Error)
 }

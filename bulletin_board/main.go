@@ -7,7 +7,8 @@ import (
 	"gin_test/bulletin_board/interfaces"
 	"gin_test/bulletin_board/model"
 	"gin_test/bulletin_board/router"
-	"gin_test/bulletin_board/service"
+	authService "gin_test/bulletin_board/service/auth"
+	postService "gin_test/bulletin_board/service/post"
 	"net/http"
 
 	"github.com/go-playground/validator/v10"
@@ -24,13 +25,13 @@ func main() {
 
 	// Users
 	userInterface := interfaces.NewUsersInterfaceImpl(db)
-	authService := service.NewAuthServiceImpl(userInterface, validate)
+	authService := authService.NewAuthServiceImpl(userInterface, validate)
 	authController := controller.NewAuthController(authService)
 	userController := controller.NewUsercontroller(userInterface)
 
 	// Posts
 	postsInterface := interfaces.NewPostsRepositoryImpl(db)
-	postsService := service.NewPostsRepositoryImpl(postsInterface, validate)
+	postsService := postService.NewPostsRepositoryImpl(postsInterface, validate)
 	postsController := controller.NewPostsController(postsService)
 
 	routes := router.NewRouter(authController, userController, postsController, userInterface)
